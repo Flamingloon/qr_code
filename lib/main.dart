@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code/scanner.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,8 +50,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
   @override
   Widget build(BuildContext context) {
+    GoogleSignInAccount? user = _googleSignIn.currentUser;
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -58,7 +62,12 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: ElevatedButton(
             child: Text('Scan'),
-            onPressed: () {
+            onPressed: () async {
+              await _googleSignIn.signIn();
+              setState(() {
+
+              });
+
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Scanner()),
