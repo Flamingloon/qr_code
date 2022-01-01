@@ -69,15 +69,12 @@ class _ScannerState extends State<Scanner> {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) async {
       controller.pauseCamera();
-      if (await canLaunch(scanData.code)) {
-        await launch(scanData.code);
-        controller.resumeCamera();
-      } else {
+
         showDialog(
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: const Text('Could not find viable url'),
+              title: const Text('Code read success'),
               content: SingleChildScrollView(
                 child: ListBody(
                   children: <Widget>[
@@ -97,7 +94,7 @@ class _ScannerState extends State<Scanner> {
             );
           },
         ).then((value) => controller.resumeCamera());
-      }
+
     });
   }
 }
