@@ -51,7 +51,11 @@ class _MyHomePageState extends State<MyHomePage> {
               await _googleSignIn.signIn();
               setState(() {
 
+
+
+
               });
+
 
               Navigator.push(
                 context,
