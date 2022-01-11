@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ElevatedButton(
             child: user!=null? Text("Scan"): Text("Login") ,
             onPressed: () async {
-              await signInWithGoogle();
+              // await signInWithGoogle();
               setState(() {
 
 
@@ -88,6 +88,9 @@ class _MyHomePageState extends State<MyHomePage> {
               });
 
 
+
+
+              
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Scanner()),
